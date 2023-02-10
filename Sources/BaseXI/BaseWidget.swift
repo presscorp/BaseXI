@@ -8,13 +8,13 @@
 import SwiftUI
 
 @available(iOS 14.0, *)
-protocol BaseWidget: Widget {
+public protocol BaseWidget: Widget {
 
     var kindName: String { get }
 }
 
 @available(iOS 14.0, *)
-extension BaseWidget {
+public extension BaseWidget {
 
     var kindName: String { String(describing: Self.self) }
 
