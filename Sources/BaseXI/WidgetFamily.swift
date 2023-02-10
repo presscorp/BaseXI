@@ -9,11 +9,11 @@ import SwiftUI
 import WidgetKit
 
 @available(iOS 14.0, *)
-extension WidgetFamily {
+public extension WidgetFamily {
 
-    public var widgetHeight: CGFloat { widgetSize.height }
+    var height: CGFloat { size.height }
     
-    var widgetSize: CGSize {
+    var size: CGSize {
         
         // Sizes were taken from
         // https://developer.apple.com/design/human-interface-guidelines/components/system-experiences/widgets

@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 @available(iOS 14.0, *)
 public protocol BaseWidget: Widget {
 
     var kindName: String { get }
+
+    var supportedFamilies: [WidgetFamily] { get }
 }
 
 @available(iOS 14.0, *)
