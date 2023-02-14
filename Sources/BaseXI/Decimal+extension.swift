@@ -13,7 +13,7 @@ public extension Decimal {
 
     var optionalFractionDisplayedAmount: String? { getDisplayedAmount(minimumFractionDigits: 0) }
 
-    private func getDisplayedAmount(minimumFractionDigits: Int) -> String? {
+    func getDisplayedAmount(minimumFractionDigits: Int) -> String? {
         let number = NSDecimalNumber(decimal: self)
         let numberFormatter = NumberFormatter()
         numberFormatter.decimalSeparator = "."
