@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-public struct BaseColor: RawRepresentable, Equatable {
+public struct BaseColor: Equatable {
     
-    public let rawValue: String
+    public let hexCode: String
     
-    public var color: Color { Color(hex: rawValue) ?? .black }
+    public var color: Color { Color(hex: hexCode) ?? .black }
     
-    public init(rawValue: String = #function) {
-        self.rawValue = rawValue.filter { $0.isHexDigit }.uppercased()
+    public init(hexCode: String = #function) {
+        self.hexCode = hexCode.filter { $0.isHexDigit } .uppercased()
     }
 }

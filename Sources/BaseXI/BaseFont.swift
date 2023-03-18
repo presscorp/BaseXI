@@ -8,34 +8,20 @@
 import SwiftUI
 import UIKit
 
-public class BaseFont: RawRepresentable, Equatable {
+public struct BaseFont {
 
-    public typealias RawValue = String
-
-    public let rawValue: RawValue
+    public let title: String
     
-    public let `extension`: String
-    
-    public var title: String { rawValue }
+    public let fileExtension: String
         
     public var bundle: Bundle { .main }
-    
-    public required init?(rawValue: String) { fatalError("Not implemented") }
-
-    required public init(title: String, extension: String) {
-        self.rawValue = title
-        self.extension = `extension`
-    }
     
     public func font(ofSize size: CGFloat) -> Font? {
         guard let uiFont = uiFont(ofSize: size) else { return nil }
         return Font(uiFont as CTFont)
     }
-}
 
-extension BaseFont {
-
-    func uiFont(ofSize size: CGFloat) -> UIFont? {
+    private func uiFont(ofSize size: CGFloat) -> UIFont? {
         if let font = UIFont(name: title, size: size) {
             return font
         }
@@ -43,7 +29,7 @@ extension BaseFont {
         var error: Unmanaged<CFError>?
 
         // Register font
-        guard let url = bundle.url(forResource: title, withExtension: `extension`),
+        guard let url = bundle.url(forResource: title, withExtension: fileExtension),
               CTFontManagerRegisterFontsForURL(url as CFURL, .process, &error) else {
             dump(error)
             return nil
@@ -52,4 +38,3 @@ extension BaseFont {
         return UIFont(name: title, size: size)
     }
 }
-
