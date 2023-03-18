@@ -15,6 +15,11 @@ public struct BaseFont {
     public let fileExtension: String
         
     public var bundle: Bundle { .main }
+
+    public init(title: String, extension: String) {
+        self.title = title
+        fileExtension = `extension`
+    }
     
     public func font(ofSize size: CGFloat) -> Font? {
         guard let uiFont = uiFont(ofSize: size) else { return nil }
