@@ -10,15 +10,15 @@ import UIKit
 
 public struct BaseFont {
 
-    public let title: String
+    public let name: String
     
-    public let fileExtension: String
+    public let ext: String
         
     public var bundle: Bundle { .main }
 
-    public init(title: String, extension: String) {
-        self.title = title
-        fileExtension = `extension`
+    public init(name: String, ext: String) {
+        self.name = name
+        self.ext = ext
     }
     
     public func font(ofSize size: CGFloat) -> Font? {
@@ -27,19 +27,19 @@ public struct BaseFont {
     }
 
     private func uiFont(ofSize size: CGFloat) -> UIFont? {
-        if let font = UIFont(name: title, size: size) {
+        if let font = UIFont(name: name, size: size) {
             return font
         }
 
         var error: Unmanaged<CFError>?
 
         // Register font
-        guard let url = bundle.url(forResource: title, withExtension: fileExtension),
+        guard let url = bundle.url(forResource: name, withExtension: ext),
               CTFontManagerRegisterFontsForURL(url as CFURL, .process, &error) else {
             dump(error)
             return nil
         }
 
-        return UIFont(name: title, size: size)
+        return UIFont(name: name, size: size)
     }
 }
