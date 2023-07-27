@@ -1,15 +1,15 @@
 //
-//  Color+extension.swift
+//  UIColor+extension.swift
 //  
 //
-//  Created by Zhalgas on 09.02.2023.
+//  Created by Zhalgas Baibatyr on 15.06.2023.
 //
 
-import SwiftUI
+import UIKit
 
-public extension Color {
+public extension UIColor {
 
-    init?(hex: String) {
+    convenience init?(hex: String) {
         let hexColor = hex.filter { $0.isHexDigit }
         guard hexColor.count == 6 else { return nil }
 
@@ -21,7 +21,6 @@ public extension Color {
         let g = CGFloat((hexNumber & 0x00ff00) >> 8) / 255
         let b = CGFloat((hexNumber & 0x0000ff)) / 255
 
-        self.init(red: r, green: g, blue: b)
+        self.init(red: r, green: g, blue: b, alpha: 1)
     }
 }
-
