@@ -23,7 +23,7 @@ public struct BaseImage: Equatable {
 
     public var uiImageTemplate: UIImage { uiImage.withRenderingMode(.alwaysTemplate) }
 
-    func uiImage(tint: UIColor) -> UIImage { uiImage.withTintColor(tint) }
+    public func uiImage(tint: UIColor) -> UIImage { uiImage.withTintColor(tint) }
 
-    var cgImage: CGImage? { uiImage.cgImage }
+    public var cgImage: CGImage? { uiImage.cgImage }
 }
