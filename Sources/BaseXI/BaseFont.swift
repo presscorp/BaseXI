@@ -21,12 +21,25 @@ public struct BaseFont {
         self.ext = ext
     }
     
-    public func font(ofSize size: CGFloat) -> Font? {
-        guard let uiFont = uiFont(ofSize: size) else { return nil }
+    public func font(ofSize size: CGFloat) -> Font {
+        if let uiFont = UIFont(name: name, size: size) {
+            return Font(uiFont as CTFont)
+        }
+
+        var error: Unmanaged<CFError>?
+
+        // Register font
+        guard let url = bundle.url(forResource: name, withExtension: ext),
+              CTFontManagerRegisterFontsForURL(url as CFURL, .process, &error),
+              let uiFont = UIFont(name: name, size: size) else {
+            dump(error)
+            return .system(size: size)
+        }
+
         return Font(uiFont as CTFont)
     }
 
-    public func uiFont(ofSize size: CGFloat) -> UIFont? {
+    public func uiFont(ofSize size: CGFloat) -> UIFont {
         if let font = UIFont(name: name, size: size) {
             return font
         }
@@ -37,9 +50,9 @@ public struct BaseFont {
         guard let url = bundle.url(forResource: name, withExtension: ext),
               CTFontManagerRegisterFontsForURL(url as CFURL, .process, &error) else {
             dump(error)
-            return nil
+            return .systemFont(ofSize: size)
         }
 
-        return UIFont(name: name, size: size)
+        return UIFont(name: name, size: size) ?? .systemFont(ofSize: size)
     }
 }

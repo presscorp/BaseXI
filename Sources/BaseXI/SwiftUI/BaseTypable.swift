@@ -17,12 +17,11 @@ public protocol BaseTypable {
 public extension BaseTypable {
 
     func font(_ type: BaseFont, ofSize size: CGFloat) -> Font {
-        guard redactionReasons.isEmpty,
-              let font = type.font(ofSize: size) else {
+        guard redactionReasons.isEmpty else {
             return .system(size: size)
         }
 
-        return font
+        return type.font(ofSize: size)
     }
 }
 
