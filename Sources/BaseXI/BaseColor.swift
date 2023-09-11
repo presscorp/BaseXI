@@ -1,6 +1,6 @@
 //
 //  BaseColor.swift
-//  BaseXI
+//
 //
 //  Created by Zhalgas on 09.02.2023.
 //
