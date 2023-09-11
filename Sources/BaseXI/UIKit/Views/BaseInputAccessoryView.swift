@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class BaseInputAccessoryView: BaseInputView {
+open class BaseInputAccessoryView: BaseInputView {
 
     public weak var inputAccessoryViewDelegate: BaseInputAccessoryViewDelegate?
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class BaseButton: UIButton {
+open class BaseButton: UIButton {
 
     public var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
 
@@ -19,7 +19,7 @@ public class BaseButton: UIButton {
         }
     }
 
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

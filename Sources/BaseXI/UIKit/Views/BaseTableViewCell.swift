@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class BaseTableViewCell: UITableViewCell {
+open class BaseTableViewCell: UITableViewCell {
 
     public var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
 
@@ -19,7 +19,7 @@ public class BaseTableViewCell: UITableViewCell {
         }
     }
 
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

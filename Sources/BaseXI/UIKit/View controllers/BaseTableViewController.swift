@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class BaseTableViewController: UITableViewController {
+open class BaseTableViewController: UITableViewController {
 
     private var customRefreshControl: UIRefreshControl?
 

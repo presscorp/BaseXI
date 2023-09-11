@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class BaseCollectionViewCell: UICollectionViewCell {
+open class BaseCollectionViewCell: UICollectionViewCell {
 
     public var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
 
@@ -19,7 +19,7 @@ public class BaseCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

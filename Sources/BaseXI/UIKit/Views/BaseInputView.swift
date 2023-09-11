@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class BaseInputView: UIInputView {
+open class BaseInputView: UIInputView {
 
     public var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
 
@@ -19,7 +19,7 @@ public class BaseInputView: UIInputView {
         }
     }
 
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

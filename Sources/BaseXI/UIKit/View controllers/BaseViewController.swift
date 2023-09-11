@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class BaseViewController: UIViewController {
+open class BaseViewController: UIViewController {
 
     var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class BaseScrollView: UIScrollView {
+open class BaseScrollView: UIScrollView {
 
     public let contentView = UIView()
 
@@ -21,7 +21,7 @@ public class BaseScrollView: UIScrollView {
         contentView.layoutMargins = .zero
     }
 
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class BaseNavigationController: UINavigationController {
+open class BaseNavigationController: UINavigationController {
 
     public weak var baseNavigationDelegate: BaseNavigationDelegate?
 
