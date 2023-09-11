@@ -9,7 +9,7 @@ import UIKit
 
 open class BaseInputView: UIInputView {
 
-    public var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
+    open var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
 
     override public init(frame: CGRect, inputViewStyle: UIInputView.Style) {
         super.init(frame: frame, inputViewStyle: inputViewStyle)
@@ -29,7 +29,7 @@ open class BaseInputView: UIInputView {
         }
     }
 
-    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override open func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
         if let customView = self as? ViewCustomizable {

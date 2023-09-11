@@ -9,9 +9,9 @@ import UIKit
 
 open class BaseTableViewController: UITableViewController {
 
-    private var customRefreshControl: UIRefreshControl?
+    open var customRefreshControl: UIRefreshControl?
 
-    public var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
+    open var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
 
     open var refreshingIsAllowed = false {
         didSet {
@@ -32,7 +32,7 @@ open class BaseTableViewController: UITableViewController {
         }
     }
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.separatorStyle = .none
@@ -42,11 +42,11 @@ open class BaseTableViewController: UITableViewController {
         }
     }
 
-    override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override open func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
         if let customViewController = self as? ViewCustomizable {
@@ -56,17 +56,17 @@ open class BaseTableViewController: UITableViewController {
 
     private func reuseId<T: UIView>(for type: T.Type) -> String { String(describing: T.self) }
 
-    public func register<T: UITableViewCell>(_: T.Type) {
+    open func register<T: UITableViewCell>(_: T.Type) {
         let reuseId = reuseId(for: T.self)
         tableView.register(T.self, forCellReuseIdentifier: reuseId)
     }
 
-    public func register<T: UITableViewHeaderFooterView>(_: T.Type) {
+    open func register<T: UITableViewHeaderFooterView>(_: T.Type) {
         let reuseId = reuseId(for: T.self)
         tableView.register(T.self, forHeaderFooterViewReuseIdentifier: reuseId)
     }
 
-    public func dequeueReusableCell<T: UITableViewCell>(for indexPath: IndexPath) -> T {
+    open func dequeueReusableCell<T: UITableViewCell>(for indexPath: IndexPath) -> T {
         let reuseId = reuseId(for: T.self)
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseId, for: indexPath) as? T else {
             fatalError("Could not dequeue cell with identifier: " + reuseId)
@@ -74,7 +74,7 @@ open class BaseTableViewController: UITableViewController {
         return cell
     }
 
-    public func dequeueReusableHeaderFooter<T: UITableViewHeaderFooterView>() -> T {
+    open func dequeueReusableHeaderFooter<T: UITableViewHeaderFooterView>() -> T {
         let reuseId = reuseId(for: T.self)
         guard let headerFooter = tableView.dequeueReusableHeaderFooterView(withIdentifier: reuseId) as? T else {
             fatalError("Could not dequeue cell with identifier: " + reuseId)

@@ -9,6 +9,8 @@ import UIKit
 
 open class BaseScrollView: UIScrollView {
 
+    open var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
+
     public let contentView = UIView()
 
     override public init(frame: CGRect) {
@@ -19,6 +21,10 @@ open class BaseScrollView: UIScrollView {
 
         alwaysBounceVertical = true
         contentView.layoutMargins = .zero
+
+        if let customView = self as? ViewCustomizable {
+            customView.customize()
+        }
     }
 
     required public init?(coder: NSCoder) {
@@ -43,5 +49,13 @@ open class BaseScrollView: UIScrollView {
         ]
 
         NSLayoutConstraint.activate(layoutConstraints)
+    }
+
+    override open func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if let customView = self as? ViewCustomizable {
+            customView.restyleViews()
+        }
     }
 }

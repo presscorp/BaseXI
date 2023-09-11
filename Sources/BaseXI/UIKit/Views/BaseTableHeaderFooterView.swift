@@ -9,7 +9,7 @@ import UIKit
 
 open class BaseTableHeaderFooterView: UITableViewHeaderFooterView {
 
-    public var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
+    open var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
 
     override public init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -29,7 +29,7 @@ open class BaseTableHeaderFooterView: UITableViewHeaderFooterView {
         }
     }
 
-    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override open func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
         if let customView = self as? ViewCustomizable {

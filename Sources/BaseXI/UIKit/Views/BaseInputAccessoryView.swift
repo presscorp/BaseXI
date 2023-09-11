@@ -9,13 +9,13 @@ import UIKit
 
 open class BaseInputAccessoryView: BaseInputView {
 
-    public weak var inputAccessoryViewDelegate: BaseInputAccessoryViewDelegate?
+    open weak var inputAccessoryViewDelegate: BaseInputAccessoryViewDelegate?
 
     private var observer: NSKeyValueObservation?
 
     deinit { observer?.invalidate() }
 
-    override public func willMove(toSuperview newSuperview: UIView?) {
+    override open func willMove(toSuperview newSuperview: UIView?) {
         observer?.invalidate()
         observer = newSuperview?.observe(\.center) { [weak self] _, _ in
             self?.didChangeFrame()
@@ -24,7 +24,7 @@ open class BaseInputAccessoryView: BaseInputView {
         super.willMove(toSuperview: newSuperview)
     }
 
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         didChangeFrame()
     }

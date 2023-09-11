@@ -9,7 +9,7 @@ import UIKit
 
 open class BaseCollectionView: UICollectionView {
 
-    public var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
+    open var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
 
     override public init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
@@ -29,7 +29,7 @@ open class BaseCollectionView: UICollectionView {
         }
     }
 
-    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override open func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
         if let customView = self as? ViewCustomizable {
@@ -39,17 +39,17 @@ open class BaseCollectionView: UICollectionView {
 
     private func reuseId<T: UIView>(for type: T.Type) -> String { String(describing: T.self) }
 
-    public func register<T: UICollectionViewCell>(_: T.Type) {
+    open func register<T: UICollectionViewCell>(_: T.Type) {
         let reuseId = reuseId(for: T.self)
         register(T.self, forCellWithReuseIdentifier: reuseId)
     }
 
-    public func register<T: UICollectionReusableView>(_: T.Type, forSupplementaryViewOfKind: String) {
+    open func register<T: UICollectionReusableView>(_: T.Type, forSupplementaryViewOfKind: String) {
         let reuseId = reuseId(for: T.self)
         register(T.self, forSupplementaryViewOfKind: forSupplementaryViewOfKind, withReuseIdentifier: reuseId)
     }
 
-    public func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T {
+    open func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T {
         let reuseId = reuseId(for: T.self)
         guard let cell = dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as? T else {
             fatalError("Could not dequeue cell with identifier: " + reuseId)
@@ -57,7 +57,7 @@ open class BaseCollectionView: UICollectionView {
         return cell
     }
 
-    public func dequeueReusableSupplementaryView<T: UICollectionReusableView>(
+    open func dequeueReusableSupplementaryView<T: UICollectionReusableView>(
         ofKind: String,
         for indexPath: IndexPath
     ) -> T {

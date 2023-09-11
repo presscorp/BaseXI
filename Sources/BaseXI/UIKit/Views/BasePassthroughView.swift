@@ -9,7 +9,7 @@ import UIKit
 
 open class BasePassthroughView: BaseView {
 
-    override public func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+    override open func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         let view = super.hitTest(point, with: event)
         return view == self ? nil : view
     }

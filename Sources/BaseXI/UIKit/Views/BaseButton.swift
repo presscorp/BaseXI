@@ -9,7 +9,7 @@ import UIKit
 
 open class BaseButton: UIButton {
 
-    public var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
+    open var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,7 +29,7 @@ open class BaseButton: UIButton {
         }
     }
 
-    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override open func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
         if let customView = self as? ViewCustomizable {

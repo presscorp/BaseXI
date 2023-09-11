@@ -9,9 +9,9 @@ import UIKit
 
 open class BaseNavigationController: UINavigationController {
 
-    public weak var baseNavigationDelegate: BaseNavigationDelegate?
+    open weak var baseNavigationDelegate: BaseNavigationDelegate?
 
-    public var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
+    open var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
 
     deinit {
         if let customViewController = self as? ViewCustomizable {
@@ -19,7 +19,7 @@ open class BaseNavigationController: UINavigationController {
         }
     }
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
 
@@ -28,7 +28,7 @@ open class BaseNavigationController: UINavigationController {
         }
     }
 
-    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override open func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
         if let customViewController = self as? ViewCustomizable {
@@ -39,7 +39,7 @@ open class BaseNavigationController: UINavigationController {
 
 extension BaseNavigationController: UINavigationControllerDelegate {
 
-    public func navigationController(
+    open func navigationController(
         _ navigationController: UINavigationController,
         didShow viewController: UIViewController,
         animated: Bool

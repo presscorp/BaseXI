@@ -9,9 +9,9 @@ import UIKit
 
 open class BaseViewController: UIViewController {
 
-    var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
+    open var isDarkMode: Bool { traitCollection.userInterfaceStyle == .dark }
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         if let customViewController = self as? ViewCustomizable {
@@ -25,7 +25,7 @@ open class BaseViewController: UIViewController {
         }
     }
 
-    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override open func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
         if let customViewController = self as? ViewCustomizable {
