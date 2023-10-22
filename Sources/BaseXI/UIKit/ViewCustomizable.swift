@@ -40,11 +40,9 @@ public extension ViewCustomizable {
 
     func setStyleProperties() {}
 
+    func setContent() {}
+
     func setActions() {}
-
-    func fillWithContent() {}
-
-    func performActionsOnViewDidLoad() {}
 
     func destruct() {}
 
