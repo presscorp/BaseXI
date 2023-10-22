@@ -26,32 +26,30 @@ public struct BaseColor: Equatable {
     }
 
     public init(hex: String = #function) {
-        if let rgb = Self.convert(hex: hex) {
-            (red, green, blue, alpha) = (rgb.red, rgb.green, rgb.blue, rgb.alpha)
-        } else {
-            (red, green, blue, alpha) = (0, 0, 0, 1)
-        }
-    }
-
-    private static func convert(hex: String) -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)? {
         let hexColor = hex.filter { $0.isHexDigit }
-        guard hexColor.count == 6 || hexColor.count == 8 else { return nil }
+        guard hexColor.count == 6 || hexColor.count == 8 else {
+            self.init(red: 0, green: 0, blue: 0, alpha: 1)
+            return
+        }
 
         let scanner = Scanner(string: hexColor)
         var hexNumber = UInt64.zero
-        guard scanner.scanHexInt64(&hexNumber) else { return nil }
+        guard scanner.scanHexInt64(&hexNumber) else {
+            self.init(red: 0, green: 0, blue: 0, alpha: 1)
+            return
+        }
 
         if hexColor.count == 6 {
             let red = CGFloat((hexNumber & 0xff0000) >> 16) / 255
             let green = CGFloat((hexNumber & 0x00ff00) >> 8) / 255
             let blue = CGFloat((hexNumber & 0x0000ff)) / 255
-            return (red, green, blue, 1)
+            self.init(red: red, green: green, blue: blue, alpha: 1)
         } else {
             let red = CGFloat((hexNumber & 0xff000000) >> 24) / 255
             let green = CGFloat((hexNumber & 0x00ff0000) >> 16) / 255
             let blue = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
             let alpha = CGFloat((hexNumber & 0x000000ff)) / 255
-            return (red, green, blue, alpha)
+            self.init(red: red, green: green, blue: blue, alpha: alpha)
         }
     }
 }

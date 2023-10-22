@@ -20,11 +20,11 @@ public struct BaseImage: Equatable {
 
     public var uiImage: UIImage { UIImage(named: name, in: bundle, compatibleWith: nil) ?? UIImage() }
 
-    public var uiImageTemplate: UIImage { uiImage.withRenderingMode(.alwaysTemplate) }
+    public var templateUIImage: UIImage { uiImage.withRenderingMode(.alwaysTemplate) }
 
     public func uiImage(tint: UIColor) -> UIImage { uiImage.withTintColor(tint) }
 
-    public func uiImageTemplate(tint: UIColor) -> UIImage { uiImageTemplate.withTintColor(tint) }
+    public func templateUIImage(tint: UIColor) -> UIImage { templateUIImage.withTintColor(tint) }
 
     public var cgImage: CGImage? { uiImage.cgImage }
 }
