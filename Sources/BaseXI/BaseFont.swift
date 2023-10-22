@@ -21,7 +21,7 @@ public struct BaseFont {
         self.bundle = bundle
     }
     
-    public func font(ofSize size: CGFloat) -> Font {
+    public func font(size: CGFloat) -> Font {
         if let uiFont = UIFont(name: name, size: size) {
             return Font(uiFont as CTFont)
         }

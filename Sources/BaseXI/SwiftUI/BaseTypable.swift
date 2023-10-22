@@ -21,7 +21,7 @@ public extension BaseTypable {
             return .system(size: size)
         }
 
-        return type.font(ofSize: size)
+        return type.font(size: size)
     }
 }
 
