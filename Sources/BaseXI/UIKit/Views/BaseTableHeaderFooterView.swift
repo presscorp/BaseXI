@@ -33,7 +33,7 @@ open class BaseTableHeaderFooterView: UITableViewHeaderFooterView {
         super.traitCollectionDidChange(previousTraitCollection)
 
         if let customView = self as? ViewCustomizable {
-            customView.restyleViews()
+            customView.setRestylableProperties()
         }
     }
 }
