@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import UIKit
 
 public struct BaseFont {
 
@@ -14,14 +13,15 @@ public struct BaseFont {
     
     public let ext: String
         
-    public var bundle: Bundle { .main }
+    public let bundle: Bundle
 
-    public init(name: String, ext: String) {
+    public init(name: String, ext: String, bundle: Bundle = .main) {
         self.name = name
         self.ext = ext
+        self.bundle = bundle
     }
     
-    public func font(ofSize size: CGFloat) -> Font {
+    public func font(size: CGFloat) -> Font {
         if let uiFont = UIFont(name: name, size: size) {
             return Font(uiFont as CTFont)
         }

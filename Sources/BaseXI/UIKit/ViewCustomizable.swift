@@ -14,20 +14,17 @@ public protocol ViewCustomizable: AnyObject {
     /// Positioning of subviews via constraints
     func setLayoutConstraints()
 
-    /// Stylization of subviews' properties
-    func stylizeViews()
+    /// Set subviews' properties based on system (light / dark) mode
+    func setRestylableProperties()
 
-    /// Update subviews' properties based on system (light / dark) mode
-    func restyleViews()
-
-    /// Set actions to UI elements
-    func setActions()
+    /// Set subviews' properties
+    func setStyleProperties()
 
     /// Fill subviews with content
-    func fillWithContent()
+    func setContent()
 
-    /// Perform actions when view is loaded into memory
-    func performActionsOnViewDidLoad()
+    /// Set actions
+    func setActions()
 
     /// Perform custom cleanup during the class destruction
     func destruct()
@@ -39,24 +36,22 @@ public extension ViewCustomizable {
 
     func setLayoutConstraints() {}
 
-    func stylizeViews() {}
+    func setRestylableProperties() {}
 
-    func restyleViews() {}
+    func setStyleProperties() {}
+
+    func setContent() {}
 
     func setActions() {}
-
-    func fillWithContent() {}
-
-    func performActionsOnViewDidLoad() {}
 
     func destruct() {}
 
     func customize() {
         setSubviews()
         setLayoutConstraints()
-        stylizeViews()
+        setRestylableProperties()
+        setStyleProperties()
+        setContent()
         setActions()
-        fillWithContent()
-        performActionsOnViewDidLoad()
     }
 }

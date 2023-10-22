@@ -29,7 +29,7 @@ open class BaseViewController: UIViewController {
         super.traitCollectionDidChange(previousTraitCollection)
 
         if let customViewController = self as? ViewCustomizable {
-            customViewController.restyleViews()
+            customViewController.setRestylableProperties()
         }
     }
 }
