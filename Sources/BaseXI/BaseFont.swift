@@ -39,7 +39,7 @@ public struct BaseFont {
         return Font(uiFont as CTFont)
     }
 
-    public func uiFont(ofSize size: CGFloat) -> UIFont {
+    public func uiFont(size: CGFloat) -> UIFont {
         if let font = UIFont(name: name, size: size) {
             return font
         }
